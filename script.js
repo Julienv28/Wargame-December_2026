@@ -12,7 +12,7 @@ document.getElementById("loginBtn").addEventListener("click", function(){
     const pass = document.getElementById("passInput").value;
 
     if(login === "L0g1n" && pass === SECRET_PASS){
-        window.location.href = "solution.html";
+         window.location.href = "network.html";
     } else {
         document.getElementById("loginMsg").innerText = "Invalid credentials";
     }
