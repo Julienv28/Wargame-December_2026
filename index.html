@@ -4,52 +4,52 @@
 <meta charset="UTF-8" />
 <title>Welcome</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #111;
-        color: #eee;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 60px;
-    }
-    .card {
-        background: #222;
-        padding: 20px;
-        border-radius: 8px;
-        width: 300px;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    input, button {
-        margin-top: 10px;
-        width: 90%;
-        padding: 10px;
-        border: none;
-        border-radius: 6px;
-    }
-    button {
-        background: #3a6;
-        cursor: pointer;
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 40px);
-        gap: 5px;
-        margin: 15px auto;
-    }
-    .grid input {
-        text-align: center;
-        width: 40px;
-        padding: 5px;
-        border-radius: 4px;
-        border: 1px solid #333;
-        background: #000;
-        color: #fff;
-    }
-    .hidden {
-        display: none;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+.card {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+input, button {
+    margin-top: 10px;
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+}
+button {
+    background: #3a6;
+    cursor: pointer;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 40px);
+    gap: 5px;
+    margin: 15px auto;
+}
+.grid input {
+    text-align: center;
+    width: 40px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background: #000;
+    color: #fff;
+}
+.hidden {
+    display: none;
+}
 </style>
 </head>
 <body>
@@ -58,7 +58,7 @@
 
 <div class="card">
     <label>
-        <input type="checkbox" disabled id="loginCheck" onclick="toggleLogin()">
+        <input type="checkbox" disabled id="loginCheck">
         get login
     </label>
     <p><small>(impossible to check… unless you edit the code 😉)</small></p>
@@ -68,7 +68,7 @@
     <h3>Login</h3>
     <input type="text" id="loginInput" placeholder="Login" />
     <input type="password" id="passInput" placeholder="Password" />
-    <button onclick="checkLogin()">Connect</button>
+    <button id="loginBtn">Connect</button>
     <p id="loginMsg"></p>
 </div>
 
@@ -93,45 +93,12 @@
         <input maxlength="1" />
     </div>
 
-    <button onclick="checkPuzzle()">Solve puzzle</button>
+    <button id="puzzleBtn">Solve puzzle</button>
     <p id="puzzleMsg"></p>
 </div>
 
-<script>
-function toggleLogin(){
-    document.getElementById("loginBox").classList.remove("hidden");
-}
-
-function checkLogin() {
-    const login = document.getElementById("loginInput").value;
-    const pass = document.getElementById("passInput").value;
-
-    if (login === "L0g1n" && pass === "P4sS_W0Rd") {
-        window.location.href = "solution.html";
-    } else {
-        document.getElementById("loginMsg").innerText = "Invalid credentials.";
-    }
-}
-
-function checkPuzzle() {
-    const cells = Array.from(document.querySelectorAll(".grid input")).map(i => i.value);
-    const rows = [
-        cells.slice(0,3),
-        cells.slice(3,6),
-        cells.slice(6,9),
-    ];
-
-    for (let r of rows) {
-        const set = new Set(r);
-        if (set.size !== 3 || !set.has("1") || !set.has("2") || !set.has("3")) {
-            document.getElementById("puzzleMsg").innerText = "Not correct yet.";
-            return;
-        }
-    }
-
-    document.getElementById("puzzleMsg").innerText = "Password = P4sS_W0Rd";
-}
-</script>
+<!-- JS externe -->
+<script src="script.js"></script>
 
 </body>
 </html>
