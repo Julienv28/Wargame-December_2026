@@ -61,27 +61,27 @@ button {
 <div class="card">
     <h2>PC A</h2>
     <input id="a_ip"   placeholder="IP"     value="10.0.0.2">
-    <input id="a_mask" placeholder="Mask"   value="">
-    <input id="a_gw"   placeholder="Gateway">
+    <input id="a_mask" placeholder="Mask"   value="255.255.255.0">
+    <input id="a_gw"   placeholder="Gateway" value="" >
 </div>
 
 <div class="card">
     <h2>Router 1</h2>
-    <input id="r1_lan" placeholder="LAN IP">
+    <input id="r1_lan" placeholder="LAN IP" value="10.0.0.1">
     <input id="r1_wan" placeholder="WAN IP">
 </div>
 
 <div class="card">
     <h2>Router 2</h2>
-    <input id="r2_wan" placeholder="WAN IP">
+    <input id="r2_wan" placeholder="WAN IP" value="10.0.1.1">
     <input id="r2_lan" placeholder="LAN IP">
 </div>
 
 <div class="card">
     <h2>PC B</h2>
     <input id="b_ip"   placeholder="IP">
-    <input id="b_mask" placeholder="Mask">
-    <input id="b_gw"   placeholder="Gateway">
+    <input id="b_mask" placeholder="Mask" value="255.255.255.0">
+    <input id="b_gw"   placeholder="Gateway" value="10.0.1.1">
 </div>
 
 <button id="checkBtn">✔️ Check network</button>
