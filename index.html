@@ -58,13 +58,13 @@
 
 <div class="card">
     <label>
-        <input type="checkbox" disabled id="loginCheck">
+        <input type="checkbox" disabled id="loginCheck" onclick="toggleLogin()">
         get login
     </label>
     <p><small>(impossible to check… unless you edit the code 😉)</small></p>
 </div>
 
-<div class="card">
+<div class="card hidden" id="loginBox">
     <h3>Login</h3>
     <input type="text" id="loginInput" placeholder="Login" />
     <input type="password" id="passInput" placeholder="Password" />
@@ -98,6 +98,10 @@
 </div>
 
 <script>
+function toggleLogin(){
+    document.getElementById("loginBox").classList.remove("hidden");
+}
+
 function checkLogin() {
     const login = document.getElementById("loginInput").value;
     const pass = document.getElementById("passInput").value;
