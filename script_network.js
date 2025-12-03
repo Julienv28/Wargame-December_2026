@@ -1,27 +1,27 @@
 (function(){
 
-    // Encodage base64 très simple pour "cacher" la solution
+    // Encodage base64 pour masquer les réponses
     const decode = s => atob(s);
 
     const SOL = {
-        a_ip: decode("MTAuMC4wLjI="),
+        a_ip:   decode("MTAuMC4wLjI="),
         a_mask: decode("MjU1LjI1NS4yNTUuMA=="),
-        a_gw: decode("MTAuMC4wLjE="),
+        a_gw:   decode("MTAuMC4wLjE="),
 
         r1_lan: decode("MTAuMC4wLjE="),
         r1_wan: decode("MTAuMC4xLjE="),
 
         r2_wan: decode("MTAuMC4xLjE="),
-        r2_lan: decode("MTAuMC4xLjE="),  // WAN/LAN same? NOPE, next line fixed:
+        r2_lan: decode("MTAuMC4xLjE="),
 
-        b_ip: decode("MTAuMC4xLjI="),
+        b_ip:   decode("MTAuMC4xLjI="),
         b_mask: decode("MjU1LjI1NS4yNTUuMA=="),
-        b_gw: decode("MTAuMC4xLjE=")
+        b_gw:   decode("MTAuMC4xLjE=")
     };
 
-    document.getElementById("checkBtn").addEventListener("click", function(){
+    const v = id => document.getElementById(id).value.trim();
 
-        const v = id => document.getElementById(id).value.trim();
+    document.getElementById("checkBtn").addEventListener("click", () => {
 
         const ok =
             v("a_ip")   === SOL.a_ip   &&
@@ -39,7 +39,9 @@
             v("b_gw")   === SOL.b_gw;
 
         if(ok){
-            window.location.href = "solution.html";
+            document.getElementById("msg").style.color="lime";
+            document.getElementById("msg").innerText = "✔️ Network restored! Redirecting...";
+            setTimeout(() => window.location.href = "solution.html", 1200);
         } else {
             document.getElementById("msg").innerText = "❌ Network still broken";
         }
