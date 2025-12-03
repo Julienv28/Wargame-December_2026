@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Network Fix</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    text-align: center;
+    padding: 40px;
+}
+.card {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 420px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+input {
+    width: 160px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #000;
+    color: #0f0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+button {
+    background: #3a6;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<h1>🔌 Network Failure 2.0</h1>
+<p>The network is broken! Fix all IPs so PC A can communicate with PC B.</p>
+
+<div class="card">
+    <h2>PC A</h2>
+    <input id="a_ip" placeholder="IP">
+    <input id="a_mask" placeholder="Mask">
+    <input id="a_gw" placeholder="Gateway">
+</div>
+
+<div class="card">
+    <h2>Router 1</h2>
+    <input id="r1_lan" placeholder="LAN IP">
+    <input id="r1_wan" placeholder="WAN IP">
+</div>
+
+<div class="card">
+    <h2>Router 2</h2>
+    <input id="r2_wan" placeholder="WAN IP">
+    <input id="r2_lan" placeholder="LAN IP">
+</div>
+
+<div class="card">
+    <h2>PC B</h2>
+    <input id="b_ip" placeholder="IP">
+    <input id="b_mask" placeholder="Mask">
+    <input id="b_gw" placeholder="Gateway">
+</div>
+
+<button id="checkBtn">Check network</button>
+<p id="msg"></p>
+
+<script src="script_network.js"></script>
+
+</body>
+</html>
