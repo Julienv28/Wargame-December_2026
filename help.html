@@ -3,30 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <title>Network Help</title>
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.box {
+    background: #222;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+ul {
+    text-align: left;
+    margin: 20px auto;
+    width: 420px;
+    line-height: 1.6;
+}
+
+.schema {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.device {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 140px;
+    text-align: center;
+    border: 2px solid #444;
+}
+
+.ip {
+    color: #3fa;
+    font-weight: bold;
+}
+
+.arrow {
+    font-size: 30px;
+    color: #666;
+}
+
+.example-box {
+    margin-top: 35px;
+    background: #000;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #444;
+}
+
+a.back {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 20px;
+    background: #357;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
 </head>
 <body>
 
 <h1>🛠️ Network basics</h1>
 
-<ul>
-    <li>All devices in a LAN must have IP addresses in the same network.</li>
-    <li>Typical format: 192.168.1.x</li>
-    <li>Router is usually .1</li>
-    <li>PCs can be .10, .11, etc.</li>
-    <li>Don't duplicate IP addresses.</li>
-</ul>
+<div class="box">
+    <p>To communicate on a network, devices must:</p>
 
-<p>
-Example:
-<br>
-PC → 192.168.1.10<br>
-Router → 192.168.1.1<br>
-PC → 192.168.1.11
-</p>
+    <ul>
+        <li>Be in the same IP range (example: 10.0.0.x)</li>
+        <li>Have the same <b>subnet mask</b></li>
+        <li>Use a <b>gateway</b> to reach other networks</li>
+        <li>Use <b>different</b> IP addresses (no duplicates!)</li>
+    </ul>
+</div>
 
-<br><br>
-<a href="network.html">Back</a>
+<!-- SCHEMA GRAPHIQUE -->
+<div class="schema">
+    <div class="device">
+        🖥️ PC A<br>
+        <span class="ip">10.0.0.2</span><br>
+        Mask: 255.255.255.0<br>
+        GW: 10.0.0.1
+    </div>
+
+    <div class="arrow">➡️</div>
+
+    <div class="device">
+        📡 Router<br>
+        <span class="ip">10.0.0.1</span><br>
+        (Gateway)
+    </div>
+
+    <div class="arrow">➡️</div>
+
+    <div class="device">
+        🖥️ PC B<br>
+        <span class="ip">10.0.0.3</span><br>
+        Mask: 255.255.255.0<br>
+        GW: 10.0.0.1
+    </div>
+</div>
+
+<div class="example-box">
+    <p><b>🧠 Rule to remember:</b><br>
+    All devices must be able to reach the <span class="ip">router</span>.<br>
+    The router is the "bridge" between networks.</p>
+</div>
+
+<a class="back" href="network.html">⬅️ Back to puzzle</a>
 
 </body>
 </html>
