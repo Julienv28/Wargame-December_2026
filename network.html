@@ -20,7 +20,7 @@ body {
     margin-top: 30px;
 }
 input {
-    width: 160px;
+    width: 180px;
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #444;
@@ -36,19 +36,33 @@ button {
     border-radius: 6px;
     cursor: pointer;
     width: 100%;
+    font-weight: bold;
+}
+.help-btn {
+    display:block;
+    background:#357;
+    margin-top:25px;
+    width:200px;
+    padding:10px;
+    text-decoration:none;
+    color:#fff;
+    border-radius:6px;
+    font-weight:bold;
+    margin-left:auto;
+    margin-right:auto;
 }
 </style>
 </head>
 <body>
 
 <h1>🔌 Network Failure 2.0</h1>
-<p>The network is broken! Fix all IPs so PC A can communicate with PC B.</p>
+<p>Fix the network so PC A can communicate with PC B.</p>
 
 <div class="card">
     <h2>PC A</h2>
-    <input id="a_ip" placeholder="IP">
-    <input id="a_mask" placeholder="Mask">
-    <input id="a_gw" placeholder="Gateway">
+    <input id="a_ip"   placeholder="IP"     value="10.0.0.2">
+    <input id="a_mask" placeholder="Mask"   value="">
+    <input id="a_gw"   placeholder="Gateway">
 </div>
 
 <div class="card">
@@ -65,15 +79,15 @@ button {
 
 <div class="card">
     <h2>PC B</h2>
-    <input id="b_ip" placeholder="IP">
+    <input id="b_ip"   placeholder="IP">
     <input id="b_mask" placeholder="Mask">
-    <input id="b_gw" placeholder="Gateway">
+    <input id="b_gw"   placeholder="Gateway">
 </div>
 
-<button id="checkBtn">Check network</button>
+<button id="checkBtn">✔️ Check network</button>
 <p id="msg"></p>
-    
-<a href="help.html">Network HELP 🛠️</a>
+
+<a class="help-btn" href="help.html">Network HELP 🛠️</a>
 
 <script src="script_network.js"></script>
 
