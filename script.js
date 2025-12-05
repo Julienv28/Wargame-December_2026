@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 // ⚡ Mot de passe côté JS (invisible dans HTML)
 const SECRET_PASS = "P4sS_W0Rd";
 
@@ -100,4 +102,5 @@ document.getElementById("puzzleBtn").addEventListener("click", function() {
 
     // All checks ok:
     document.getElementById("puzzleMsg").innerText = "Password = P4sS_W0Rd";
+});
 });
