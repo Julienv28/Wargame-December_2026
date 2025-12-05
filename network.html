@@ -11,24 +11,55 @@ body {
     text-align: center;
     padding: 40px;
 }
+
+h1 {
+    margin-bottom: 20px;
+    color: #0f0;
+}
+
 .card {
     background: #222;
-    padding: 20px;
-    border-radius: 8px;
-    width: 420px;
-    margin: 0 auto;
-    margin-top: 30px;
+    padding: 25px 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    text-align: left;
 }
-input {
-    width: 180px;
+
+.card h2 {
+    color: #0f0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #0f0;
+}
+
+.input-group input {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #444;
     background: #000;
     color: #0f0;
-    margin-bottom: 10px;
-    text-align: center;
+    font-size: 16px;
+    font-style: normal;
 }
+
+.input-group input::placeholder {
+    font-style: italic;
+    color: #0a0;
+}
+
 button {
     background: #3a6;
     border: none;
@@ -37,19 +68,26 @@ button {
     cursor: pointer;
     width: 100%;
     font-weight: bold;
+    margin-top: 10px;
 }
+
+#msg {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
 .help-btn {
-    display:block;
-    background:#357;
-    margin-top:25px;
-    width:200px;
-    padding:10px;
-    text-decoration:none;
-    color:#fff;
-    border-radius:6px;
-    font-weight:bold;
-    margin-left:auto;
-    margin-right:auto;
+    display: block;
+    background: #357;
+    margin-top: 25px;
+    width: 200px;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>
 </head>
@@ -60,44 +98,58 @@ button {
 
 <div class="card">
     <h2>PC A</h2>
-    <label>IP Address</label>
-    <input id="a_ip"   placeholder="00.00.00.00" value="10.0.0.2">
-
-    <label>Subnet Mask</label>
-    <input id="a_mask" placeholder="00.00.00.00" value="255.255.255.0">
-
-    <label>Default Gateway</label>
-    <input id="a_gw"   placeholder="00.00.00.00" value="">
+    <div class="input-group">
+        <label for="a_ip">IP Address</label>
+        <input id="a_ip" placeholder="00.00.00.00" value="10.0.0.2">
+    </div>
+    <div class="input-group">
+        <label for="a_mask">Subnet Mask</label>
+        <input id="a_mask" placeholder="00.00.00.00" value="255.255.255.0">
+    </div>
+    <div class="input-group">
+        <label for="a_gw">Default Gateway</label>
+        <input id="a_gw" placeholder="00.00.00.00" value="">
+    </div>
 </div>
 
 <div class="card">
     <h2>Router 1</h2>
-    <label>LAN IP</label>
-    <input id="r1_lan" placeholder="00.00.00.00" value="10.0.0.1">
-
-    <label>WAN IP</label>
-    <input id="r1_wan" placeholder="00.00.00.00" value="">
+    <div class="input-group">
+        <label for="r1_lan">LAN IP</label>
+        <input id="r1_lan" placeholder="00.00.00.00" value="10.0.0.1">
+    </div>
+    <div class="input-group">
+        <label for="r1_wan">WAN IP</label>
+        <input id="r1_wan" placeholder="00.00.00.00" value="">
+    </div>
 </div>
 
 <div class="card">
     <h2>Router 2</h2>
-    <label>WAN IP</label>
-    <input id="r2_wan" placeholder="00.00.00.00" value="10.0.1.1">
-
-    <label>LAN IP</label>
-    <input id="r2_lan" placeholder="00.00.00.00" value="">
+    <div class="input-group">
+        <label for="r2_wan">WAN IP</label>
+        <input id="r2_wan" placeholder="00.00.00.00" value="10.0.1.1">
+    </div>
+    <div class="input-group">
+        <label for="r2_lan">LAN IP</label>
+        <input id="r2_lan" placeholder="00.00.00.00" value="">
+    </div>
 </div>
 
 <div class="card">
     <h2>PC B</h2>
-    <label>IP Address</label>
-    <input id="b_ip"   placeholder="00.00.00.00" value="">
-
-    <label>Subnet Mask</label>
-    <input id="b_mask" placeholder="00.00.00.00" value="255.255.255.0">
-
-    <label>Default Gateway</label>
-    <input id="b_gw"   placeholder="00.00.00.00" value="10.0.1.1">
+    <div class="input-group">
+        <label for="b_ip">IP Address</label>
+        <input id="b_ip" placeholder="00.00.00.00" value="">
+    </div>
+    <div class="input-group">
+        <label for="b_mask">Subnet Mask</label>
+        <input id="b_mask" placeholder="00.00.00.00" value="255.255.255.0">
+    </div>
+    <div class="input-group">
+        <label for="b_gw">Default Gateway</label>
+        <input id="b_gw" placeholder="00.00.00.00" value="10.0.1.1">
+    </div>
 </div>
 
 <button id="checkBtn">✔️ Check network</button>
@@ -106,6 +158,5 @@ button {
 <a class="help-btn" href="help.html">Network HELP 🛠️</a>
 
 <script src="script_network.js"></script>
-
 </body>
 </html>
