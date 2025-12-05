@@ -60,28 +60,44 @@ button {
 
 <div class="card">
     <h2>PC A</h2>
-    <input id="a_ip"   placeholder="IP"     value="10.0.0.2">
-    <input id="a_mask" placeholder="Mask"   value="255.255.255.0">
-    <input id="a_gw"   placeholder="Gateway" value="" >
+    <label>IP Address</label>
+    <input id="a_ip"   placeholder="00.00.00.00" value="10.0.0.2">
+
+    <label>Subnet Mask</label>
+    <input id="a_mask" placeholder="00.00.00.00" value="255.255.255.0">
+
+    <label>Default Gateway</label>
+    <input id="a_gw"   placeholder="00.00.00.00" value="">
 </div>
 
 <div class="card">
     <h2>Router 1</h2>
-    <input id="r1_lan" placeholder="LAN IP" value="10.0.0.1">
-    <input id="r1_wan" placeholder="WAN IP">
+    <label>LAN IP</label>
+    <input id="r1_lan" placeholder="00.00.00.00" value="10.0.0.1">
+
+    <label>WAN IP</label>
+    <input id="r1_wan" placeholder="00.00.00.00" value="">
 </div>
 
 <div class="card">
     <h2>Router 2</h2>
-    <input id="r2_wan" placeholder="WAN IP" value="10.0.1.1">
-    <input id="r2_lan" placeholder="LAN IP">
+    <label>WAN IP</label>
+    <input id="r2_wan" placeholder="00.00.00.00" value="10.0.1.1">
+
+    <label>LAN IP</label>
+    <input id="r2_lan" placeholder="00.00.00.00" value="">
 </div>
 
 <div class="card">
     <h2>PC B</h2>
-    <input id="b_ip"   placeholder="IP">
-    <input id="b_mask" placeholder="Mask" value="255.255.255.0">
-    <input id="b_gw"   placeholder="Gateway" value="10.0.1.1">
+    <label>IP Address</label>
+    <input id="b_ip"   placeholder="00.00.00.00" value="">
+
+    <label>Subnet Mask</label>
+    <input id="b_mask" placeholder="00.00.00.00" value="255.255.255.0">
+
+    <label>Default Gateway</label>
+    <input id="b_gw"   placeholder="00.00.00.00" value="10.0.1.1">
 </div>
 
 <button id="checkBtn">✔️ Check network</button>
