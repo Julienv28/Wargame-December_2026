@@ -19,7 +19,7 @@ document.getElementById("loginBtn").addEventListener("click", function(){
 });
 
 // puzzle validation
-ocument.getElementById("puzzleBtn").addEventListener("click", function() {
+document.getElementById("puzzleBtn").addEventListener("click", function() {
 
     const table = document.getElementById("puzzleTable");
 
