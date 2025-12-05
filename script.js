@@ -19,27 +19,85 @@ document.getElementById("loginBtn").addEventListener("click", function(){
 });
 
 // puzzle validation
-const SOLUTION = [
-    [1,3,4,2],
-    [4,2,1,3],
-    [2,4,3,1],
-    [3,1,2,4]
-];
+ocument.getElementById("puzzleBtn").addEventListener("click", function() {
 
-document.getElementById("puzzleBtn").addEventListener("click", function(){
     const table = document.getElementById("puzzleTable");
-    let correct = true;
 
-    for(let r=1;r<=4;r++){
-        for(let c=1;c<=4;c++){
-            const val = parseInt(table.rows[r].cells[c].querySelector('input').value);
-            if(val !== SOLUTION[r-1][c-1]){
-                correct = false;
-                break;
+    // ---- Extract 4x4 grid of numbers ----
+    let grid = [];
+    for(let r = 1; r <= 4; r++){
+        let row = [];
+        for(let c = 1; c <= 4; c++){
+            let val = parseInt(table.rows[r].cells[c].querySelector('input').value);
+            if(isNaN(val) || val < 1 || val > 4){
+                document.getElementById("puzzleMsg").innerText = "Not correct yet";
+                return;
             }
+            row.push(val);
         }
-        if(!correct) break;
+        grid.push(row);
     }
 
-    document.getElementById("puzzleMsg").innerText = correct ? "Password = P4sS_W0Rd" : "Not correct yet";
+    // ---- Helpers ----
+    const visibleFromLeft = arr => {
+        let max = 0, count = 0;
+        for(let v of arr){
+            if(v > max){
+                max = v;
+                count++;
+            }
+        }
+        return count;
+    };
+
+    const visibleFromRight = arr => visibleFromLeft([...arr].reverse());
+
+    // ---- Check rows uniqueness & visibility ----
+    for(let r = 0; r < 4; r++){
+
+        // uniqueness row
+        if(new Set(grid[r]).size !== 4){
+            document.getElementById("puzzleMsg").innerText = "Not correct yet";
+            return;
+        }
+
+        let leftClue  = parseInt(table.rows[r+1].cells[0].innerText);
+        let rightClue = parseInt(table.rows[r+1].cells[5].innerText);
+
+        if(leftClue && visibleFromLeft(grid[r]) !== leftClue){
+            document.getElementById("puzzleMsg").innerText = "Not correct yet";
+            return;
+        }
+        if(rightClue && visibleFromRight(grid[r]) !== rightClue){
+            document.getElementById("puzzleMsg").innerText = "Not correct yet";
+            return;
+        }
+    }
+
+    // ---- Check columns uniqueness & visibility ----
+    for(let c = 0; c < 4; c++){
+
+        let col = [ grid[0][c], grid[1][c], grid[2][c], grid[3][c] ];
+
+        // uniqueness col
+        if(new Set(col).size !== 4){
+            document.getElementById("puzzleMsg").innerText = "Not correct yet";
+            return;
+        }
+
+        let topClue    = parseInt(table.rows[0].cells[c+1].innerText);
+        let bottomClue = parseInt(table.rows[5].cells[c+1].innerText);
+
+        if(topClue && visibleFromLeft(col) !== topClue){
+            document.getElementById("puzzleMsg").innerText = "Not correct yet";
+            return;
+        }
+        if(bottomClue && visibleFromRight(col) !== bottomClue){
+            document.getElementById("puzzleMsg").innerText = "Not correct yet";
+            return;
+        }
+    }
+
+    // All checks ok:
+    document.getElementById("puzzleMsg").innerText = "Password = P4sS_W0Rd";
 });
